@@ -1,4 +1,4 @@
-from mathext.Primes import primes
+from mathools.Primes import primes
 
 def test_quantity():
     assert len(primes.between(0, 1e6)) == 78498
