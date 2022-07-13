@@ -46,11 +46,10 @@ class Base():
         return to_base.value_to_base(num)
 
 if __name__ == "__main__":
-    b16 = Base(16)
-    txt1 = b16.value_to_base(7842)
-    print(txt1)
-    b2 = Base(2)
-    txt2 = b16.convert_base(txt1, b2)
-    print(txt2)
-    val = b2.value_from_base(txt2)
-    print(val)
+    hex = Base(16)
+    binary = Base(2)
+    octal = Base(8)
+
+    assert hex.value_to_base(36) == '24'
+    assert hex.convert_base('15A', binary) == '101011010'
+    assert octal.value_from_base('30071') == 12345
