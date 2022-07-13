@@ -1,2 +1,2 @@
-from mathools.BaseChange import Base
-from mathools.Primes import primes
+from mathools import base
+from mathools import primes

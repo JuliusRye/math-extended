@@ -12,7 +12,7 @@ setup(
     fullname='Math tools', 
     author='Julius Rye Bønnelykke', 
     author_email='juliusrye@gmail.com', 
-    version='0.1.0', 
+    version='0.1.1', 
     url = 'https://github.com/JuliusRye/math-extended',
     packages=setuptools.find_packages(),
     # entry_points={
