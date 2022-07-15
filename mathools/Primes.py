@@ -46,6 +46,8 @@ class _Primes():
         return self.primes
     
     def factor(self, num: int) -> np.ndarray:
+        if num <= 1:
+            raise ValueError(f"Can only prime factor numbers >= 1 but got num = {num}")
         self.between(0, num)
         num_ = num
         factor = []
@@ -65,6 +67,14 @@ class _Primes():
         if num - self.primes[idx-1] <= self.primes[idx] - num:
             return self.primes[idx-1]
         return self.primes[idx]
+    
+    def prime_factors(self, arr: np.ndarray) -> np.ndarray:
+        result = np.empty(arr.shape, dtype=int)
+        it = np.nditer(arr, flags=['multi_index'])
+        for v in it:
+            result[it.multi_index] = len(self.factor(int(v)))
+        return result
+            
 
 primes = _Primes()
  
@@ -74,3 +84,14 @@ if __name__ == "__main__":
     print(c)
     f = primes.factor(n)
     print(f)
+    x = np.arange(2, 10000)
+    y_min = x*0
+    y_max = primes.prime_factors(x)
+    
+    from matplotlib import pyplot as plt
+    
+    plt.figure()
+    plt.vlines(x, y_min, y_max)
+    plt.plot(x, y_max, '.')
+    plt.xscale('log')
+    plt.show()
